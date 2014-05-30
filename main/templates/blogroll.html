@@ -1,0 +1,62 @@
+{% extends "base/base.html" %}
+
+{% block header %}
+<link type='text/css' href='{{MEDIA_URL}}/css/simplemodal/basic.css' rel='stylesheet'/>
+<link type='text/css' href='{{MEDIA_URL}}/css/buttons/buttons.css' rel='stylesheet'/>
+<style type="text/css">
+	#basic-modal-content intput {width: 200px;}
+	.blogroll_ul li {line-height: 30px;}
+</style>
+
+<script type="text/javascript">
+	$(function(){
+		register_shortcut($('#basic-modal-content input'), $('#apply_blogroll_id'));
+	})
+</script>
+{% endblock %}
+
+
+{% block container %}
+{% if not vbs %}
+<div class="alert alert-block">虚位以待，欢迎申请。当然，不一定会同意，合拍则通过</div>
+{% else %}
+<p>已有友情链接如下:</p>
+<div class="blank5"></div>
+<ul class="blogroll_ul">
+	{% for vb in vbs %}
+	<li><a href="{{vb.link}}" target="_blank"><i class="icon-leaf"></i>{{vb.name}}</a></li>
+	{% endfor %}
+</ul>
+{% endif %}
+
+<div class="blank20"></div>
+<p style="margin-top: 50px;">
+	<span>如果正好你有个博客，希望出现在这里，可申请成为互访的友情链接</span><br />
+	<a href="javascript:void(0);" onclick="$('#basic-modal-content').modal();">立即申请</a>
+</p>
+
+
+<div id="basic-modal-content">
+	<h3>请留下博客信息和联系方式</h3>
+	<div class="blank10"></div>
+	<p>博客名称： <input id="blogroll_name" type="text" /></p>
+	<p>博客地址： <input id="blogroll_link" type="text" /></p>
+	<p>联系邮箱： <input id="blogger_email" type="text" /></p>
+	<div class="blank10"></div>
+	<p class="tc" style="width: 300px;">
+		<a href="javascript:void(0)" onclick="apply_blogroll();" id="apply_blogroll_id"
+		class="button button-rounded button-flat-primary button-small">提交申请</a>
+	</p>
+	<!-- <p class="tc" style="width: 300px;"><botton class="btn btn-info" onclick="apply_blogroll();">提交申请</botton></p> -->
+	
+</div>
+
+<div style='display:none'>
+	<img src='{{MEDIA_URL}}/img/x.png' alt='' />
+</div>
+{% endblock%}
+
+
+{% block body_tail %}
+<script type='text/javascript' src='{{MEDIA_URL}}/js/jquery.simplemodal.js'></script>
+{% endblock %}

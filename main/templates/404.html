@@ -1,0 +1,23 @@
+<div></div>{% extends "base/base_404_500.html" %}
+
+{% block title %}404 页面未找到{% endblock %} 
+{% block css %}
+{% endblock %}
+
+{% block content %}
+<div style="margin:10px;"></div>
+<div style="text-align:center;">不好，该页面失踪中...... 你可以<a href="/">返回首页</a>继续访问</div>
+<div style="margin:10px;"></div>
+<div style="background-color: #E6EAED; min-height:100px;"></div>
+<div style="background-color: #E6EAED; min-height:500px;">
+	<div style="width: 400px; margin: 0 auto;">
+		<img src="{{MEDIA_URL}}/img/404.jpg" alt="500" />
+	</div>
+</div>
+
+<div style="margin:10px;"></div>
+<div style="text-align:center;">404 img from <a target="_blank" href="http://dribbble.com/shots/255204-Sad-Panda-404">dirbbble</a></div>
+<div style="margin:10px;"></div>
+{% endblock %}
+
+

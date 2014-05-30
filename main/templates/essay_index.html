@@ -1,0 +1,58 @@
+{% extends "base/base.html" %}
+
+{% block header %}
+<link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}/css/grumble.min.css">
+<script type="text/javascript" src="{{MEDIA_URL}}/js/jquery.grumble.min.js"></script>
+
+{% if kindly_msg %}
+<script type="text/javascript">
+    $(function(){
+        $('#content_container_id li').eq(0).grumble({
+            text:'{{kindly_msg|safe}}', 
+            angle: 135, 
+            distance: 0, 
+            type: 'alt-',
+            //hideAfter:100000,
+            //hasHideButton: true,
+            //showAfter: 500 
+        });
+    })
+</script>
+{% endif %}
+
+{% endblock %}
+
+
+{% block container %}
+<style>
+    .entry_item{margin:12px 0;}
+    .entry_item_title{margin-top:24px; font-family:"georgia";}
+    .entry_item a{margin:0 15px;}
+    .entry_item_title a{margin-left:0;}
+    .create_date{font-family:"PT Sans, sans-serif"; color:#999999;}
+</style>
+
+{% if category_domain %}
+<ul class="breadcrumb">
+    <li><a href="/">全部</a> <span class="divider">/</span></li>
+    <li class="active">{{category.name}}</li>
+</ul>
+{% endif %}
+
+{% if not essays %}
+<div class="alert alert-block">博主懒惰，该栏目暂空空如也</div>
+{% else %}
+<ul class="f16">
+    {% for e in essays %}
+    <li class="entry_item entry_item_title"><a href="###">{{e.0}}</a></li>
+    {% for se in e.1 %}
+    <li class="entry_item">
+        <span class="create_date">{{se.create_time|date:'Y-m-d'}}</span>
+        <a href="{{se.get_url}}">{{se.title}}</a>
+    </li>
+    {% endfor %}
+    {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}
+            

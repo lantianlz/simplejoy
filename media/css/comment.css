@@ -1,0 +1,21 @@
+@charset "utf-8";
+
+/*评论模块css*/
+.comment_list{margin-bottom:10px; margin-top:10px}
+.comment_list dt{width:55px; height:55px; float:left}
+.comment_list dd{margin-left:0px;}
+.comment_list dd p{margin-bottom:5px;}
+
+.comment_list{margin-bottom:10px; margin-top:10px}
+.comment_list img{ border-radius: 4px; -moz-border-radius: 4px; -webkit-border-radius: 4px;  }
+.comment_list .icon{width:55px; height:55px; float:left}
+.comment_list .content{margin-left:20px; float:left;}
+.comment_list .content p{margin-bottom:5px;}
+
+.comment_area{background-color: #F9F9F9;border: 1px solid #BBBBBB;border-radius: 2px 2px 2px 2px; width:644px; height:80px; padding:2px; margin:0 auto;}
+.comment_title{margin-bottom:5px;}
+
+.comment_frame{width:97%; min-height:0px; background-color:#FFFCE9; border:1px solid #EBDEBC; padding:10px;
+                border-radius:5px 5px 5px 5px;padding-top:10px;}
+                
+#create_comment_id, .create_comment_a{border-radius:5px 5px 5px 5px; float:right; width:55px; height:22px; line-height:22px;}

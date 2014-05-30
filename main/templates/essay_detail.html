@@ -1,0 +1,38 @@
+{% extends "base/base.html" %}
+{% load custom_tags %}
+
+{% block header %}
+<style type="text/css">
+	.essay_container .essay_title{font-size: 24px; margin-bottom: 10px;}
+	.essay_container .meta{color: #999;}
+	.essay_container p{text-indent: 32px; font-size: 16px; line-height: 28px; margin-bottom: 10px;}
+	.marb0_area{margin-bottom: 10px;}
+	.marb0_area p{margin: 0;}
+</style>
+{% endblock %}
+
+
+{% block container %}
+<div class="essay_container">
+	<h1 class="essay_title tc">{{essay.title}}</h1>
+	<h6 class="meta tc">
+		{{essay.create_time}} by
+		<a href="{{essay.auther_url}}">{{essay.auther_name}}</a>
+		&nbsp;&nbsp;&nbsp;归类于
+		<a href="{{essay.category.get_url}}">{{essay.category.name}}</a>
+		&nbsp;&nbsp;&nbsp;出处:
+		<a href="{{essay.outer_link}}" target="_blank">{{essay.get_source_display}}</a>
+	</h6>
+
+	<div class="blank20"></div>
+	{{essay.content|safe}}
+</div>
+
+<div class="blank30"></div>
+{% import_variable 'outerobj_type' 'essay' %}
+{% import_variable 'comment_show_type' '0' %}
+<div id="{{outerobj_type}}_{{outerobj_id}}"></div>
+{% include "comment/_comment.html" %}
+{% endblock %}
+
+

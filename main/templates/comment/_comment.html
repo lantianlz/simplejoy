@@ -1,0 +1,13 @@
+<!-- 通用评论模块 -->
+{% load custom_tags %}
+<link rel="stylesheet" href="{{MEDIA_URL}}/css/comment.css" type="text/css" />
+<script type="text/javascript" src="{{MEDIA_URL}}/js/comment.js"></script>
+
+
+<!-- 通过ajax获取评论 -->
+<script type="text/javascript">
+	jQ(function(){
+	    get_comment('{{outerobj_type}}', '{{outerobj_id}}', '{{comment_show_type}}', '1', '{{can_create_comment_permission}}');
+	});
+</script>
+

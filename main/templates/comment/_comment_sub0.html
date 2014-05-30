@@ -1,0 +1,35 @@
+{% load custom_filters %}
+
+<div id="comment_frame_id">
+	<script type="text/javascript">
+	$(function(){
+		$('#comment_content_id_{{outerobj_id}}').focus(function(){
+			$('#comment_frame_id input').show();
+		});
+	})
+	</script>
+	<p id="division_id" class="comment_title f16 marb10">英雄留名</p>
+    {% for c in lst_comment %}
+    {% include 'comment/_comment_single_list0.html' %}
+	{% endfor %}
+	
+	<div class="blank0"></div>
+	{{paging_html}}
+	<div class="blank0"></div>
+	
+	{%if not can_create_comment_permission %}
+	{%else%}
+	<!--[if lt IE 9]>请依次输入：邮箱、大名or外号、博客地址(选填)、想说的话这四项内容<![endif]-->
+	<div><input type="text" placeholder="邮箱" id="email" style="display:none" value="{{comment_user.email}}"></div>
+	<div><input type="text" placeholder="大名 or 外号" id="nick" style="display:none" value="{{comment_user.nick}}"></div>
+	<div><input type="text" placeholder="博客(选填)" id="user_href" style="display:none" value="{{comment_user.user_href}}"></div>
+	<textarea class="comment_area" name="content" id="comment_content_id_{{outerobj_id}}" placeholder="输入想说的话"></textarea>
+	<div class="blank10"></div>
+	<div>
+	<a id="create_comment_id" class="f14" style="float:left; height:25px; width:70px; line-height:25px; border-radius:3px;" 
+	   onclick="create_comment('{{outerobj_type}}', '{{outerobj_id}}', '0');" 
+	   href="javascript:void(0);">走你</a>
+	</div>
+	{%endif%}
+	
+</div>

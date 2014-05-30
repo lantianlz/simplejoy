@@ -1,0 +1,71 @@
+{% extends "base/base.html" %}
+
+{% block header %}
+<link type='text/css' href='{{MEDIA_URL}}/css/simplemodal/basic.css' rel='stylesheet' media='screen' />
+<link type='text/css' href='{{MEDIA_URL}}/css/buttons/buttons.css' rel='stylesheet'/>
+<style type="text/css">
+	/*p.textindent2 {line-height: 1.8em; }*/
+</style>
+
+<script type="text/javascript">
+	$(function(){
+		register_shortcut($('#friend_name'), $('#check_friend_name_id'));
+	})
+</script>
+{% endblock %}
+
+
+{% block container %}
+<p class="textp">简单的快乐</p>
+<p class="textp">
+	这纷纷扰扰的世界，嘈杂而浮躁，烦恼的事可以有很多，但生活中也一直不乏一些简单的快乐：一本好书、一篇好文章、一首好歌、一部好电影、一餐美食、一次出行、一场好球、一段诗样的代码、一个陪伴的人，这些产生的简单的快乐常伴左右。
+</p>
+<p class="textp">
+	建立此独立博客，给自己一块完全自由的空间，记录一篇篇或幼稚或浅显的文章、一段段天马行空的想象、一次次程序人生中的点滴，来作为记忆的封存，若干年后，蓦然回头来看看，也许会笑一笑，乐一乐，足矣。
+</p>
+<p class="textp">本人暂为coder一枚，08年始从业，专注于web开发，爱好小而美互联网产品，并愿意动手实现，欢迎交流。</p>
+
+<div class="blank20"></div>
+<p>
+	<span>联系我：</span><br />
+	<span>微博： </span><a href="http://weibo.com/simplejoy2" target='_blank'>简单的快乐lz</a><br />
+	<span>邮箱： lantian-lz@163.com</span><br />
+	<span>手机：
+		<span id="mobilephone">保密，对部分好友公开，
+			<a href="javascript:void(0);" onclick="$('#basic-modal-content').modal();">输入真实姓名</a>，检测通过后显示手机号
+		</span>
+	</span>
+</p>
+
+<div id="basic-modal-content">
+	<h3>检测是否在好友列表中</h3>
+	<div class="blank10"></div>
+	<p>真实姓名： <input id="friend_name" type="text" /></p>
+	<div class="blank10"></div>
+	<p class="tc" style="width: 300px;">
+		<a href="javascript:void(0)" class="button button-rounded button-flat-primary button-small" 
+			onclick="check_friend_name();" id="check_friend_name_id">提交</a>
+	</p>
+</div>
+
+<div style='display:none'>
+	<img src='{{MEDIA_URL}}/img/x.png' alt='' />
+</div>
+
+{% endblock %}
+
+
+{% block body_tail %}
+<script type='text/javascript' src='{{MEDIA_URL}}/js/jquery.simplemodal.js'></script>
+<link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}/css/jquery.snippet.min.css" />
+<script type="text/javascript" src="{{MEDIA_URL}}/js/jquery.snippet.min.js"></script>
+
+<script type="text/javascript">
+	$(function(){
+		// 代码块语法高亮
+		$("pre.pythonCode").snippet("python", {style:"bright", transparent:false, showNum:true, 
+											   box:"", menu:false, startText:false,});
+	});
+</script>
+
+{% endblock%}            
