@@ -2,8 +2,7 @@
 
 from django.contrib import admin
 
-from main.blog.models import Essay, Category, BlogRoll, FriendCheck
-
+from www.blog.models import Essay, Category, BlogRoll, FriendCheck
 
 
 class EssayAdmin(admin.ModelAdmin):

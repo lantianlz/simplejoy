@@ -35,7 +35,7 @@ def display_nav_category(context):
     """
     @note: 导航中的分类展现
     """
-    from main.blog.interface import get_all_valid_catagory
+    from www.blog.interface import get_all_valid_catagory
     cs = get_all_valid_catagory()
 
     html = u''

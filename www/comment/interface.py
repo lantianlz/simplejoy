@@ -4,9 +4,9 @@ import datetime
 from django.db import transaction
 from django.conf import settings
 
-from main.lib import cache, debug, utils
-from main.comment.models import Comment, CommentCount
-from main.tasks import async_send_email
+from www.lib import cache, debug, utils
+from www.comment.models import Comment, CommentCount
+from www.tasks import async_send_email
 
 # 需要国际化
 dict_err = {
@@ -143,7 +143,7 @@ class CommentOperateBase(object):
 
             # 记录
             elif outerobj_type == 'essay':
-                from main.blog.models import Essay
+                from www.blog.models import Essay
                 outerobj = Essay.objects.get(id=outerobj_id)
         except ObjectDoesNotExist:
             outerobj = None
@@ -200,7 +200,7 @@ class CommentOperateBase(object):
         """
         @attention: 获取外部类型code对应的整形表示
         """
-        from main.comment.models import outerobj_type_choices
+        from www.comment.models import outerobj_type_choices
         for t in outerobj_type_choices:
             if str(t[1]) == str(outerobj_type):
                 return t[0]

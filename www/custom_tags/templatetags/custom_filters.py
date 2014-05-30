@@ -18,7 +18,7 @@ register = template.Library()
 """
 
 
-#escape类型输出demo
+# escape类型输出demo
 @register.filter
 def initial_letter_filter(text, autoescape=None):
     if autoescape:
@@ -30,15 +30,13 @@ def initial_letter_filter(text, autoescape=None):
 initial_letter_filter.needs_autoescape = False
 
 
-
 @register.filter
 def str_display(str_in, maxlength):
     """
     @attention: 截断输入字符串,超过最大长度加...
     """
     maxlength = int(maxlength)
-    return (str_in[:maxlength] + u'...') if  str_in.__len__() > maxlength else str_in
-
+    return (str_in[:maxlength] + u'...') if str_in.__len__() > maxlength else str_in
 
 
 def get_page_url(url, page=1):
@@ -52,7 +50,6 @@ def get_page_url(url, page=1):
     re_pn = re.compile('page=\d+', re.IGNORECASE)
     url = re_pn.sub('page=%s' % page, url)
     return url
-
 
 
 @register.filter('paging')
@@ -82,7 +79,7 @@ def paging(value, request, get_page_onclick=None, page_onclick_params={}):
     page_limit = 9
     page_half_limit = 4
 
-    #总页数小于一页总数
+    # 总页数小于一页总数
     if total_page <= page_limit:
         page_items = range(1, total_page + 1)
     else:
@@ -90,12 +87,12 @@ def paging(value, request, get_page_onclick=None, page_onclick_params={}):
         end = page + page_half_limit if page + page_half_limit <= total_page else total_page
         page_items = range(start, end + 1)
 
-    #加上头
+    # 加上头
     if page_items[0] != 1:
         page_items.insert(0, 1)
         if page_items[1] > 2:
             page_items.insert(1, '...')
-    #加上尾
+    # 加上尾
     if page_items[-1] != total_page:
         if page_items[-1] < total_page - 1:
             page_items.append('...')
@@ -143,6 +140,7 @@ def format_minutes(value, arg):
             minutes = str(value % 60)
         return ":".join([hour, minutes])
 
+
 @register.filter
 def format_iso_date(value, arg):
     year, month, day = value.split("-")
@@ -152,6 +150,7 @@ def format_iso_date(value, arg):
         return month
     else:
         return day
+
 
 @register.filter
 def split_datetime(value, arg):
@@ -167,14 +166,17 @@ def split_datetime(value, arg):
     elif arg == "second":
         return time.split(":")[2]
 
+
 @register.filter
 def division(value, arg):
     return value / float(arg)
+
 
 @register.filter
 def number_format(value):
     chinese_number = [u"零", u"一", u"二", u"三", u"四", u"五", u"六", u"七"]
     return chinese_number[value]
+
 
 @register.filter
 def format_today_yes(value):
@@ -196,7 +198,7 @@ def change_http_data(content):
     @author: lizheng
     @date:  2011-02-22
     """
-    #替换带有左右空格等空白字符的http数据链接
+    # 替换带有左右空格等空白字符的http数据链接
     r = '\s+(https?\:\/\/[\w\/\.\?\&\=\~\-\_]+)(\s+|$)'
 
     p = re.compile(r, re.DOTALL | re.IGNORECASE)
@@ -212,13 +214,11 @@ def custom_devide(value, arg=1):
     @param arg:arg not allow 0 
     '''
     try:
-        return value * 1.0 / arg 
+        return value * 1.0 / arg
     except:
         return None
 
 
-#格式化时间输出
-from main.lib.utils import time_format
+# 格式化时间输出
+from www.lib.utils import time_format
 register.filter('time_format', time_format)
-    
-    

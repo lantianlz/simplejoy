@@ -5,9 +5,9 @@ from django.template import RequestContext
 from django.http import HttpResponse, Http404
 import json
 
-from main.lib import utils
-from main.lib.decorators import request_limit_by_ip
-from main.blog import interface
+from www.lib import utils
+from www.lib.decorators import request_limit_by_ip
+from www.blog import interface
 
 
 def essay_index(request, template_name='essay_index.html'):
@@ -61,7 +61,7 @@ def advert(request, template_name="advert.html"):
     """
     @note: 广告
     """
-    from main.lib.consts import lst_advert_info
+    from www.lib.consts import lst_advert_info
     return render_to_response(template_name, dict(lst_advert_info=lst_advert_info), context_instance=RequestContext(request))
 
 

@@ -2,7 +2,7 @@
 
 from django.contrib import admin
 
-from main.comment.models import Comment, CommentCount
+from www.comment.models import Comment, CommentCount
 
 
 class CommentAdmin(admin.ModelAdmin):

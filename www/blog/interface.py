@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from main.lib import utils, cache
-from main.blog.models import BlogRoll, FriendCheck, Essay, Category
+from www.lib import utils, cache
+from www.blog.models import BlogRoll, FriendCheck, Essay, Category
 
 dict_err = {
     101: u'已提交该博客的申请，审核中，请勿重复申请',

@@ -3,13 +3,14 @@
 import sys
 import os
 sys.path.extend(['../../', 'e:\\workspace\\google_code\\simplejoy'])
-os.environ['DJANGO_SETTINGS_MODULE'] = 'main.settings'
+os.environ['DJANGO_SETTINGS_MODULE'] = 'www.settings'
 
 from pprint import pprint
-from main.lib import utils
+from www.lib import utils
+
 
 def test_cache():
-    from main.lib import cache
+    from www.lib import cache
     key = 'test'
     value = 'test_value'
 
@@ -19,12 +20,12 @@ def test_cache():
 
 
 def test_emalil():
-    from main.lib import utils
+    from www.lib import utils
     utils.send_email(emails="lizheng@codoon.com", title='test', content='test')
 
 
 def test():
-    from main.blog.interface import get_kindly_msg
+    from www.blog.interface import get_kindly_msg
     print get_kindly_msg('test').encode('utf8')
 
 
@@ -33,4 +34,3 @@ if __name__ == '__main__':
     # test_emalil()
 
     test()
-

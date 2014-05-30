@@ -5,9 +5,9 @@ from django import template
 from django.template.context import RequestContext
 import json
 
-from main.lib import page, utils
-from main.lib.decorators import request_limit_by_ip, member_required
-from main.comment import interface
+from www.lib import page, utils
+from www.lib.decorators import request_limit_by_ip, member_required
+from www.comment import interface
 
 
 def format_outerobj_comment(objs, login_user):
@@ -38,8 +38,8 @@ def get_outerobj_comment(request):
     page_params = (page_objs[1], page_objs[4])
     lst_comment = format_outerobj_comment(objs, request.user)
 
-    from main.custom_tags.templatetags.custom_filters import paging
-    from main.comment.interface import get_comment_page_onclick
+    from www.custom_tags.templatetags.custom_filters import paging
+    from www.comment.interface import get_comment_page_onclick
     paging_html = paging(page_params, request, get_page_onclick=get_comment_page_onclick,
                          page_onclick_params=dict(outerobj_type=outerobj_type, outerobj_id=outerobj_id,
                                                   comment_show_type=comment_show_type,
@@ -49,7 +49,7 @@ def get_outerobj_comment(request):
     tem = template.loader.get_template('comment/_comment_sub%s.html' % comment_show_type)
     context_instance = RequestContext(request)
     context_instance.update(dict(lst_comment=lst_comment, outerobj_type=outerobj_type, outerobj_id=outerobj_id,
-                                 request=request, paging_html=paging_html, 
+                                 request=request, paging_html=paging_html,
                                  can_create_comment_permission=can_create_comment_permission,
                                  comment_user=request.session.get('comment_user')))
 

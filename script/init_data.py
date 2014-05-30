@@ -2,11 +2,11 @@
 
 import sys
 import os
-sys.path.extend(['E:\\workspace\\google_code\\simplejoy', 'E:\\workspace\\google_code\\simplejoy\\main'])
-sys.path.extend(['/var/www/simplejoy', '/var/www/simplejoy/main'])
-os.environ['DJANGO_SETTINGS_MODULE'] = 'main.settings'
+sys.path.extend(['E:\\workspace\\google_code\\simplejoy', 'E:\\workspace\\google_code\\simplejoy\\www'])
+sys.path.extend(['/var/www/simplejoy', '/var/www/simplejoy/www'])
+os.environ['DJANGO_SETTINGS_MODULE'] = 'www.settings'
 
-from main.blog.models import Category
+from www.blog.models import Category
 
 
 def init_category():

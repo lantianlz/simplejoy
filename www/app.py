@@ -3,7 +3,7 @@
 import sys
 import os
 sys.path += ['/var/www', '/var/www/simplejoy']
-os.environ['DJANGO_SETTINGS_MODULE'] = 'main.settings'
+os.environ['DJANGO_SETTINGS_MODULE'] = 'www.settings'
 
 from django.core.handlers.wsgi import WSGIHandler
 application = WSGIHandler()
