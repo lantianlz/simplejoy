@@ -1,5 +1,7 @@
 {% extends "base/base.html" %}
 
+{% block title %}{% if category %}{{category.name}} - simplejoy{% else %}simplejoy{% endif %}{% endblock %}
+
 {% block header %}
 <link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}/css/grumble.min.css">
 <script type="text/javascript" src="{{MEDIA_URL}}/js/jquery.grumble.min.js"></script>

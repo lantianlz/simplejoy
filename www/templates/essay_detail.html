@@ -1,6 +1,8 @@
 {% extends "base/base.html" %}
 {% load custom_tags %}
 
+{% block title_head %}{{essay.title}}{% endblock %}
+
 {% block header %}
 <style type="text/css">
 	.essay_container .essay_title{font-size: 24px; margin-bottom: 10px;}

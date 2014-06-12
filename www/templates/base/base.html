@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-us">
     <head>
 		<meta charset="utf-8">
-		<title>simplejoy</title>
+		<title>{% block title %}{% block title_head %}{% endblock title_head %} - simplejoy{% endblock title %}</title>
 		<meta name="xianguo" content="BANGBDF057E13AEAEFC56F5DDF97XIANGUO" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="author" content="simplejoy">
@@ -65,14 +65,15 @@
 		
 		{% include "include/_footer.html" %}
 
-		<div class="alert alert-success popmsg none" id="divSuccess">ok</div>
+		<div class="alert alert-success popmsg none" id="divSuccess"></div>
 		<div class="alert alert-error popmsg none" id="divError">
 			<button onclick="$('#divError').hide();" class="close" type="button">×</button>
-			<span>error</span>
+			<span></span>
 		</div>
 		
 		{% block body_tail %}{% endblock body_tail %}
 
+		{% if not LOCAL_FLAG %}
 		<script>
 			var _hmt = _hmt || [];
 			(function() {
@@ -82,6 +83,7 @@
 			  s.parentNode.insertBefore(hm, s);
 			})();
 		</script>
+		{% endif %}
 
 	</body>
 </html>

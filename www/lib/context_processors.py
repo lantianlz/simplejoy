@@ -17,5 +17,6 @@ def config(request):
     return {
         'DEBUG': settings.DEBUG,
         'RSS_IMG': random.randint(2, 5),
-        'MEDIA_VERSION':settings.MEDIA_VERSION,
+        'MEDIA_VERSION': settings.MEDIA_VERSION,
+        'LOCAL_FLAG': settings.LOCAL_FLAG,
     }
