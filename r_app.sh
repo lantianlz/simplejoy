@@ -6,5 +6,5 @@ fi
 ports=`ps aux | grep $1: | grep -v grep | gawk '{print $NF}' | sed 's/:.../:/'`
 for port in ${ports[*]}
 do
-    supervisorctl restart $port
+    /opt/python2.7.2/bin/supervisorctl restart $port
 done
