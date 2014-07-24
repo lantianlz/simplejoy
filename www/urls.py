@@ -20,8 +20,8 @@ urlpatterns = patterns('',
 
                        url(r'^comment/', include('www.comment.urls')),
                        url(r'^s/(?P<template_name>.*)$', 'www.blog.views.static'),
-                       # url(r'^media/(?P<path>.*)$', 'django.views.static.serve',
-                       #     {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
+                       url(r'^media/(?P<path>.*)$', 'django.views.static.serve',
+                           {'document_root': settings.MEDIA_ROOT, 'show_indexes': False}),
 
                        # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
                        url(r'^admin/', include(admin.site.urls)),

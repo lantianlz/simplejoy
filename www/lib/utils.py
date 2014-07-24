@@ -152,7 +152,7 @@ def escape_text(str):
         .replace(' ', '&nbsp;') \
         .replace('>', '&gt;') \
         .replace('<', '&lt;') \
-        .replace('\n', '&nbsp;&nbsp;&nbsp;')
+        .replace('\n', '<br />')
     return newStr
 
 

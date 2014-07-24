@@ -4,12 +4,12 @@
     <!-- <dt><a href="{{c.user.get_url}}"><img src="{{c.user.get_icon_middle}}" /></a></dt> -->
     <dd>
         <p>
-            <a href="{{c.user_href|default:"###"}}" target="_blank">{{c.nick}}</a>&nbsp;&nbsp;
+            <a href="{{c.user_href|default:"javascript:void(0);"}}" {% if c.user_href %}target="_blank"{% endif %}>{{c.nick}}</a>&nbsp;&nbsp;
             <span class="co8">{{c.create_time|time_format}}</span>
         </p>
         <table cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed">
             <tr>
-                <td width="100%" style="word-break:break-all; word-wrap:break-word;">{{c.content}}</td>
+                <td width="100%" style="word-break:break-all; word-wrap:break-word;">{{c.content|safe}}</td>
             </tr>
             <tr>
                 <td>
