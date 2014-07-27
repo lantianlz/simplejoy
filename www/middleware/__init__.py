@@ -20,4 +20,4 @@ class ErrorInfoMidware(object):
         title = u"blog %s error %s in %s" % (settings.SERVER_NAME, exception, url)
         logging.error(title + "\n" + content)
         if not settings.DEBUG:
-            utils.send_email_to_me(title, content, async=False)
+            utils.send_email_to_me(title, content, async=False, type="text")

@@ -95,10 +95,9 @@ class CommentOperateBase(object):
             cache_key = u'%s_%s' % ('pre_comment_', email)
             cache.set(cache_key, content, time_out=600)
 
+            context = dict(user_href=user_href, nick=nick, content=content, email=email, essay=outerobj)
             if email != settings.MY_EMAIL:
-                e_content = u'%s %s 回复了你的文章 %s "%s":\n内容为:\n%s\n邮箱为:%s' % (user_href, nick,
-                                                                           outerobj.get_full_url(),
-                                                                           outerobj.title, original_content, email)
+                e_content = utils.render_email_template('email/recevied_comment.html', context=context)
                 utils.send_email_to_me(title=u'收到一条新的评论', content=e_content)
 
             # 通知at到的人
@@ -106,8 +105,7 @@ class CommentOperateBase(object):
             for at_nick in at_nicks:
                 at_email = get_user_email_by_nick(at_nick)
                 if at_email and at_email != settings.MY_EMAIL and at_email != email:
-                    e_content = u'%s %s 在simplejoy的文章 %s "%s"中回复了你\n内容为:\n%s\n\n你可以去文章中回复TA' \
-                        % (user_href, nick, outerobj.get_full_url(), outerobj.title, original_content)
+                    e_content = utils.render_email_template('email/at.html', context=context)
                     async_send_email.delay(emails=at_email, title=u'收到一条来自simplejoy的博客的评论回复', content=e_content)
 
             transaction.commit()

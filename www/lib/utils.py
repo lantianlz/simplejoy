@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import re
+import datetime
 
 
 def find_mention(text):
@@ -89,14 +90,14 @@ def send_email(emails, title, content, type='text'):
     return 0
 
 
-def send_email_to_me(title, content, type='text', async=True):
+def send_email_to_me(title, content, type='html', async=True):
     from django.conf import settings
     from www.tasks import async_send_email
 
     if async:
-        async_send_email.delay(settings.MY_EMAIL, title, content)
+        async_send_email.delay(settings.MY_EMAIL, title, content, type=type)
     else:
-        async_send_email(settings.MY_EMAIL, title, content)
+        async_send_email(settings.MY_EMAIL, title, content, type=type)
 
 
 def get_clientip(request):
@@ -178,6 +179,20 @@ def vcontent(content):
 def get_function_code(func):
     return '%s_%s' % (func.__name__, func.func_code.co_filename.split('simplejoy')[-1].replace('/', '_').replace('\\', '_'))
 
+
+def render_email_template(template_name='', context={}):
+    '''
+    @note: 渲染模板
+    '''
+    from django.conf import settings
+    from django.template.loader import render_to_string
+
+    if not template_name:
+        return ''
+    context.update(now=datetime.datetime.now())
+    context.update(MAIN_DOMAIN=settings.SITE_DOMAIN)
+
+    return render_to_string(template_name, context)
 
 if __name__ == '__main__':
     print vemail('lantian-_1212lz@163.com')

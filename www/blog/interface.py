@@ -36,7 +36,8 @@ def apply_blogroll(name, link, email, ip):
         return False, dict_err.get(101)
 
     BlogRoll.objects.create(name=name, link=link, email=email, ip=ip)
-    e_content = u'博客名称为:%s, 链接为：%s\n联系方式为:%s, ip为：%s' % (name, link, email, ip)
+    e_content = u'<br />博客名称: %s<br />链接：%s<br />联系方式为:%s<br />ip：%s<br />' % (name, link, email, ip)
+    e_content = utils.render_email_template('email/base_email.html', context=dict(content=e_content))
     utils.send_email_to_me(title=u'收到一个信息博客友情链接请求', content=e_content)
 
     return True, dict_err.get(000)
@@ -66,6 +67,7 @@ def check_friend_name(name, ip):
     FriendCheck.objects.get_or_create(name=name, defaults=dict(ip=ip))
 
     e_content = u'姓名为:%s, ip为：%s' % (name, ip)
+    e_content = utils.render_email_template('email/base_email.html', context=dict(content=e_content))
     utils.send_email_to_me(title=u'收到一个显示电话号码的请求', content=e_content)
 
     return True, u'13005012270'

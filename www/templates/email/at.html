@@ -1,0 +1,12 @@
+{% extends "email/base_email.html" %}
+{% block email_body %}
+<div class="" style="margin-top:25px 0;">
+    <div style="padding-top: 5px;">
+        <a href="{{user_href}}" style="padding-right: 5px;">{{nick}}</a> 在simplejoy的随笔：
+        <a style="" href="{{essay.get_full_url}}">{{essay.title}}</a> 中回复了你
+        <br />你可以去这篇随笔中回复她，良好的沟通是灵感的来源
+    </div>
+    <div style="padding-top: 10px; padding-bottom: 15px; font-size: 16px">{{content|safe}}</div>
+</div>
+{% endblock %}
+
