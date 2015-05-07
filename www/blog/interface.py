@@ -70,7 +70,7 @@ def check_friend_name(name, ip):
     e_content = utils.render_email_template('email/base_email.html', context=dict(content=e_content))
     utils.send_email_to_me(title=u'收到一个显示电话号码的请求', content=e_content)
 
-    return True, u'13005012270'
+    return True, u'15208411129'
 
 
 def get_valid_blogrolls():
