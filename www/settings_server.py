@@ -14,7 +14,7 @@ MANAGERS = ADMINS
 
 EMAIL_FROM = u'"简单的快乐的博客" <blog@simplejoy.me>'
 EMAIL_HOST_USER = 'blog@simplejoy.me'
-EMAIL_HOST_PASSWORD = 'lz19851129'
+EMAIL_HOST_PASSWORD = ''
 EMAIL_HOST = 'smtp.exmail.qq.com'
 EMAIL_PORT = '25'
 MY_EMAIL = 'lantian-lz@163.com'
